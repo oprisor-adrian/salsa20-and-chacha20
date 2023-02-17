@@ -1,10 +1,9 @@
 #ifndef STREAM_CIPHERS_INCLUDE_STREAM_CIPHERS_H_
 #define STREAM_CIPHERS_INCLUDE_STREAM_CIPHERS_H_
 
-#include <array>
+#include <vector>
 #include <cstdint>
 
-template<class data_type>
 class StreamCipher{
   public:
     StreamCipher() = default;
