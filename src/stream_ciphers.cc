@@ -11,20 +11,18 @@ void StreamCipher::DoubleRound(std::vector<uint32_t>& state){
   // overloaded by derivated classes
 }
 
-void StreamCipher::QuarterRound(const std::vector<uint32_t>& bit,
-		                const std::vector<uint8_t>& order,
+void StreamCipher::QuarterRound(const std::vector<uint8_t>& order,
 				std::vector<uint32_t>& state){
-  state[order[1]] ^= LeftBitRotation((state[order[0]] + state[order[3]]), bit[0]);
-  state[order[2]] ^= LeftBitRotation((state[order[1]] + state[order[0]]), bit[1]);
-  state[order[3]] ^= LeftBitRotation((state[order[2]] + state[order[1]]), bit[2]);
-  state[order[0]] ^= LeftBitRotation((state[order[3]] + state[order[2]]), bit[3]);
+  // This function is created pnly to be
+  //  overloaded by derivated classes
+  //  Salsa20 -> change 8 output bits
+  //  ChaCha20 -> change 12.5 output bits
 }
 
-void StreamCipher::CustomRound(const std::vector<uint32_t>& bit,
-		               const std::vector<uint8_t>& order,
+void StreamCipher::CustomRound(const std::vector<uint8_t>& order,
 		               std::vector<uint32_t>& state){
   for(auto it = order.begin(); it != order.end(); it += 4){
-    QuarterRound(bit, {it, it+4}, state);
+    QuarterRound({it, it+4}, state);
   }
 }
 
