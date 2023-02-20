@@ -10,12 +10,10 @@ class StreamCipher{
     ~StreamCipher() = default;
     virtual std::vector<uint8_t> Hash();
   protected:
+    virtual void QuarterRound(const std::vector<uint8_t>& order,
+		     	      std::vector<uint32_t>& state);
     virtual void DoubleRound(std::vector<uint32_t>& state);
-    void QuarterRound(const std::vector<uint32_t>& bit, 
-		      const std::vector<uint8_t>& order,
-		      std::vector<uint32_t>& state);
-    void CustomRound(const std::vector<uint32_t>& bit, 
-		     const std::vector<uint8_t>& order, 
+    void CustomRound(const std::vector<uint8_t>& order, 
 		     std::vector<uint32_t>& state);
     uint32_t LeftBitRotation(const uint32_t& value, const uint32_t& bits) const;
     uint32_t LittleEndian(const std::vector<uint8_t>& sequence) const;

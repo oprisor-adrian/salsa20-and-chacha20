@@ -13,8 +13,8 @@ class Salsa20: public StreamCipher{
     ~Salsa20() = default;
     std::vector<uint8_t> Hash();
   private:
+    void QuarterRound(const std::vector<uint8_t>& order, std::vector<uint32_t>& state);
     void DoubleRound(std::vector<uint32_t>& state);
-    const std::vector<uint32_t> kbits_ {7, 9, 13, 18};
     std::vector<uint8_t> state_;
     uint32_t rounds_;
 };
