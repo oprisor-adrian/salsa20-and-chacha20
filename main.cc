@@ -34,6 +34,5 @@ int main(){
     std::cout << int(*it) << " ";
   }
   std::cout << std::endl;
-
   return 0;
 }

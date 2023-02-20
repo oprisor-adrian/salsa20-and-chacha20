@@ -65,15 +65,12 @@ void ChaCha20::QuarterRound(const std::vector<uint8_t>& order,
   state[order[0]] += state[order[1]];
   state[order[3]] ^= state[order[0]];
   state[order[3]] = LeftBitRotation((state[order[3]]),16); 
-
   state[order[2]] += state[order[3]];
   state[order[1]] ^= state[order[2]];
   state[order[1]] = LeftBitRotation(state[order[1]], 12);
- 
   state[order[0]] += state[order[1]];
   state[order[3]] ^= state[order[0]];
   state[order[3]] = LeftBitRotation((state[order[3]]), 8); 
-
   state[order[2]] += state[order[3]];
   state[order[1]] ^= state[order[2]];
   state[order[1]] = LeftBitRotation((state[order[1]]), 7);
