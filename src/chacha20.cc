@@ -34,11 +34,9 @@ ChaCha20::ChaCha20(const std::vector<uint8_t>& key,
 
 std::vector<uint8_t> ChaCha20::Hash(){
   std::vector<uint32_t> state_copy(state_);
-
   for(unsigned int index = 0; index < rounds_; index++){
     DoubleRound(state_copy);
   }
-
   std::vector<uint8_t> output_state;
   for(unsigned int index = 0; index < 16; index++){
     std::vector<uint8_t> inv = LittleEndianInverse(state_[index] + state_copy[index]);
